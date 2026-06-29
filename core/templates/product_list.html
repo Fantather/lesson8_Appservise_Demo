@@ -1,12 +1,35 @@
-{% for product in products %}
-    <div>
-        <h3>{{ product.name }}</h3>
-        <p>Категория: {{ product.category.name }}</p>
-        
-        {% if product.image %}
-            <img src="{{ product.image.url }}" alt="{{ product.name }}" width="200">
-        {% else %}
-            <p>Нет изображения</p>
-        {% endif %}
-    </div>
-{% endfor %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список товаров</title>
+</head>
+<body>
+    <h1>Товары</h1>
+    
+    <a href="{% url 'product-create' %}">Добавить новый товар</a>
+    <hr>
+
+    {% for product in products %}
+        <div>
+            <h3>{{ product.name }}</h3>
+            <p>Категория: {{ product.category.name }}</p>
+            
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" width="200">
+            {% else %}
+                <p>Нет изображения</p>
+            {% endif %}
+            
+            <p>Теги: 
+                {% for tag in product.tags.all %}
+                    {{ tag.name }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+        </div>
+        <hr>
+    {% empty %}
+        <p>Товаров пока нет.</p>
+    {% endfor %}
+</body>
+</html>

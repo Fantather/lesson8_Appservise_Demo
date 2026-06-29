@@ -1,5 +1,21 @@
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Создать товар</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление товара</title>
+</head>
+<body>
+    <h1>Создать новый товар</h1>
+    
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+        
+        <button type="submit">Сохранить товар</button>
+    </form>
+
+    <br>
+    <a href="{% url 'product-list' %}">Вернуться к списку товаров</a>
+</body>
+</html>

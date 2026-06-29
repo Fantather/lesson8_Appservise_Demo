@@ -29,6 +29,9 @@ SECRET_KEY = 'django-insecure-k9_p1%z2-v#8a$w4q*8r(4t)1y_0u+5i=3o-6p[a]s\\d;f\'g
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = [
+    'https://python-web-hngweng7edbtbjez.polandcentral-01.azurewebsites.net'
+]
 
 
 # Application definition

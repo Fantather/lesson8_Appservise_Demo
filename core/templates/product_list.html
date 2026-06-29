@@ -15,8 +15,16 @@
             <h3>{{ product.name }}</h3>
             <p>Категория: {{ product.category.name }}</p>
             
+            
+
             {% if product.image %}
                 <img src="{{ product.image.url }}" alt="{{ product.name }}" width="200">
+                <div style="background: #f0f0f0; padding: 10px; margin: 5px; font-size: 12px;">
+                    <p><strong>Debug Info:</strong></p>
+                    <p>Путь в БД (image.name): {{ product.image.name }}</p>
+                    <p>Генерируемый URL (image.url): {{ product.image.url }}</p>
+                    <p>Прямой вызов MEDIA_URL + name: {{ MEDIA_URL }}{{ product.image.name }}</p>
+                </div>
             {% else %}
                 <p>Нет изображения</p>
             {% endif %}

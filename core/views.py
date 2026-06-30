@@ -2,6 +2,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView
 from .models import Product
 from .forms import ProductForm
+from django.core.files.storage import default_storage
 
 # tag_seed()
 # category_seed()
@@ -11,6 +12,8 @@ class ProductListView(ListView):
     context_object_name = 'products'
 
     def get_queryset(self):
+        
+        print("ТЕКУЩЕЕ ХРАНИЛИЩЕ:", default_storage.__class__.__name__)
         return Product.objects.select_related('category').prefetch_related('tags').order_by('name')
 
 class ProductCreateView(CreateView):
